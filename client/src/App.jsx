@@ -6,12 +6,19 @@ import "./App.css";
 
 function App() {
   const [data, setData] = useState(DATA);
+  const createTodo = (text) => {
+    const newTodo = {
+      id: Date.now(),
+      description: text,
+    };
+    setData([...data, newTodo]);
+  };
 
   return (
     <div className="container m-5 text-center">
       <h1 className="m-5">My todo app</h1>
-      <CreateTodo />
-      <List todos={data}/>
+      <CreateTodo createTodo={createTodo}/>
+      <List todos={data} />
     </div>
   );
 }
