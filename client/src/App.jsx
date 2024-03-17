@@ -13,12 +13,16 @@ function App() {
     };
     setData([...data, newTodo]);
   };
+  const deleteTodo = (id) => {
+    const newData = data.filter((item) => item.id !== id);
+    setData(newData);
+  };
 
   return (
     <div className="container m-5 text-center">
       <h1 className="m-5">My todo app</h1>
-      <CreateTodo createTodo={createTodo}/>
-      <List todos={data} />
+      <CreateTodo createTodo={createTodo} />
+      <List todos={data} deleteTodo={deleteTodo} />
     </div>
   );
 }
