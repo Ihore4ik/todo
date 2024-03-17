@@ -1,7 +1,7 @@
-export const Todo = () => {
+export const Todo = ({ item }) => {
   return (
     <tr>
-      <td>Mark</td>
+      <td>{item.description}</td>
       <td>
         <button className="btn btn-info">Edit</button>
       </td>

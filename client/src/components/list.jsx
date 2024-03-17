@@ -1,6 +1,6 @@
 import { Todo } from "./todo";
 
-export const List = () => {
+export const List = ({ todos }) => {
   return (
     <table className="table">
       <thead>
@@ -13,11 +13,9 @@ export const List = () => {
         </tr>
       </thead>
       <tbody>
-        {
-        [...new Array(5)].map((item, index) => (
-          <Todo key={index} />
-        ))
-        }
+        {todos.map((item) => (
+          <Todo item={item} key={item.id} />
+        ))}
       </tbody>
     </table>
   );
