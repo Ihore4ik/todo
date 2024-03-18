@@ -2,7 +2,6 @@ import { useState } from "react";
 import { DATA } from "./data/data";
 import { CreateTodo } from "./components/create";
 import { List } from "./components/list";
-import "./App.css";
 
 function App() {
   const [data, setData] = useState(DATA);
@@ -26,7 +25,7 @@ function App() {
 
   return (
     <div className="container m-5 ">
-      <h1 className="m-5">My todo app</h1>
+      <h1 className="m-5 text-center">My todo app</h1>
       <CreateTodo createTodo={createTodo} />
       <List todos={data} deleteTodo={deleteTodo} updateTodo={updateTodo} />
     </div>
