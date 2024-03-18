@@ -1,7 +1,13 @@
 import { useState } from "react";
 
-export const Edit = ({ todo }) => {
+export const Edit = ({ todo, updateTodo }) => {
   const [value, setValue] = useState(todo.description);
+  const handleEdit = () => {
+    if (value.trim() !== "") {
+      updateTodo(todo.id, value);
+    }
+  };
+
   return (
     <>
       <button
@@ -51,7 +57,12 @@ export const Edit = ({ todo }) => {
               >
                 Close
               </button>
-              <button type="button" className="btn btn-primary">
+              <button
+                type="button"
+                className="btn btn-primary"
+                onClick={handleEdit}
+                data-bs-dismiss="modal"
+              >
                 Save changes
               </button>
             </div>
