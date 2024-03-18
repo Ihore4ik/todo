@@ -5,7 +5,7 @@ export const Todo = ({ item, deleteTodo }) => {
     <tr>
       <td>{item.description}</td>
       <td>
-          <Edit />
+          <Edit todo={item}/>
       </td>
       <td>
         <button className="btn btn-danger" onClick={() => deleteTodo(item.id)}>
