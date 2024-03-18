@@ -19,7 +19,7 @@ function App() {
   };
 
   return (
-    <div className="container m-5 text-center">
+    <div className="container m-5 ">
       <h1 className="m-5">My todo app</h1>
       <CreateTodo createTodo={createTodo} />
       <List todos={data} deleteTodo={deleteTodo} />
