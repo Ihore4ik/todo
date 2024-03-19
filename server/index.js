@@ -1,7 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const app = express();
-const controllers = require("./src/controllers");
+const router = require("./src/routes");
 const port = 4000;
 
 app.use(cors());
@@ -11,11 +11,7 @@ app.get("/", (req, res) => {
   res.send("Send from server!");
 });
 
-app.get("/todos", controllers.getAll);
-app.get("/todos/:id", controllers.getOne);
-app.post("/todos/", controllers.create);
-app.delete("/todos/:id", controllers.deleteTodo);
-app.put("/todos/:id", controllers.update);
+app.use("/todos", router);
 
 app.listen(port, () => {
   console.log(`Listening ${port} port!`);
