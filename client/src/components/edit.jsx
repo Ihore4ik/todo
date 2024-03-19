@@ -1,10 +1,10 @@
 import { useState } from "react";
 
 export const Edit = ({ todo, updateTodo }) => {
-  const [value, setValue] = useState(todo.description);
+  const [value, setValue] = useState(todo.t_description);
   const handleEdit = () => {
     if (value.trim() !== "") {
-      updateTodo(todo.id, value);
+      updateTodo(todo.t_id, value);
     }
   };
 
@@ -14,14 +14,14 @@ export const Edit = ({ todo, updateTodo }) => {
         type="button"
         className="btn btn-primary"
         data-bs-toggle="modal"
-        data-bs-target={`#myModal-${todo.id}`}
+        data-bs-target={`#myModal-${todo.t_id}`}
       >
         Edit
       </button>
 
       <div
         className="modal fade"
-        id={`myModal-${todo.id}`}
+        id={`myModal-${todo.t_id}`}
         tabIndex="-1"
         aria-labelledby="exampleModalLabel"
         aria-hidden="true"

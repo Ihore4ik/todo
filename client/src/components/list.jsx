@@ -17,7 +17,7 @@ export const List = ({ todos, deleteTodo, updateTodo }) => {
           <Todo
             item={item}
             deleteTodo={deleteTodo}
-            key={item.id}
+            key={item.t_id}
             updateTodo={updateTodo}
           />
         ))}
