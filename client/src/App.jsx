@@ -1,32 +1,36 @@
 import { useState, useEffect } from "react";
 import { CreateTodo } from "./components/create";
 import { List } from "./components/list";
-import { getAllApi } from "./api/api";
-const URL = "http://localhost:4000/todos";
+import { getAllApi, deleteApi, createApi, updateApi } from "./api/api";
 
 function App() {
   const [data, setData] = useState([]);
-  
+
   useEffect(() => {
     getAllApi(setData);
   }, []);
-  
-  const createTodo = (text) => {
-    const newTodo = {
-      t_id: Date.now(),
-      t_description: text,
-    };
-    setData([...data, newTodo]);
+
+  const createTodo = async (text) => {
+    const response = await createApi(text);
+    if (response === "Added") {
+      getAllApi(setData);
+    }
   };
-  const deleteTodo = (id) => {
-    const newData = data.filter((item) => item.t_id !== id);
-    setData(newData);
+  const deleteTodo = async (id) => {
+    const response = await deleteApi(id);
+    if (response === "Deleted") {
+      const newData = data.filter((item) => item.t_id !== id);
+      setData(newData);
+    }
   };
-  const updateTodo = (id, text) => {
-    const newData = data.map((el) =>
-      el.t_id === id ? { ...el, t_description: text } : el
-    );
-    setData(newData);
+  const updateTodo = async (id, text) => {
+    const response = await updateApi(id, text);
+    if (response === "Updated") {
+      const newData = data.map((el) =>
+        el.t_id === id ? { ...el, t_description: text } : el
+      );
+      setData(newData);
+    }
   };
 
   return (

@@ -21,10 +21,9 @@ const getOne = async (req, res) => {
 
 const create = async (req, res) => {
   const { description } = req.body;
-  console.log(req.body);
   try {
     const result = await pool.query(queries.create, [description]);
-    res.status(200).send("Todo was added!");
+    res.status(200).send("Added");
   } catch (error) {
     console.log(error);
   }
@@ -34,7 +33,7 @@ const deleteTodo = async (req, res) => {
   const { id } = req.params;
   try {
     const result = await pool.query(queries.deleteTodo, [id]);
-    res.status(200).send("Todo was deleted!");
+    res.status(200).send("Deleted");
   } catch (error) {
     console.log(error);
   }
@@ -45,7 +44,7 @@ const update = async (req, res) => {
   const { description } = req.body;
   try {
     const result = await pool.query(queries.update, [id, description]);
-    res.status(200).send("Todo was updated!");
+    res.status(200).send("Updated");
   } catch (error) {
     console.log(error);
   }
